@@ -1,7 +1,9 @@
 package portfolio.Controllers;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.LogManager;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.qos.logback.classic.Logger;
 import portfolio.Models.Product;
 import portfolio.Models.shipwrecks;
 import portfolio.Service.ShipwreckService;
@@ -23,9 +26,11 @@ public class ShipWreckCtr {
     ShipwreckService shipWreckService;
 
 
+
     @GetMapping("/ping")
     @ResponseBody
     public HttpEntity<String> test(){
+
         return new HttpEntity<>("hello Wolrd");
     }
 
