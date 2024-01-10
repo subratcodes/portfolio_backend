@@ -1,11 +1,13 @@
 package portfolio.Utilities.Interceptors;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@Component
 public class RequestInterceptor implements HandlerInterceptor {
     
     @Override
@@ -14,7 +16,8 @@ public class RequestInterceptor implements HandlerInterceptor {
       String reqHeader=request.getHeader("Connection");
       System.out.println(reqHeader);
       response.addHeader("Subrat", "Singh");
-      return true ;
+       System.out.println(request.getProtocol());
+       return false;
 
     }
 
