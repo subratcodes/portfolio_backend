@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.qos.logback.classic.Logger;
+import portfolio.Exceptions.ShipWreckException;
 import portfolio.Models.Product;
 import portfolio.Models.shipwrecks;
 import portfolio.Service.ShipwreckService;
@@ -31,17 +32,8 @@ public class ShipWreckCtr {
     @GetMapping("/ping")
     public ResponseEntity<ResponseTemplate> test(){
 
-        try {
-            
-            throw new Exception("Some Error");
-            
-        } catch (Exception e) {
-            // TODO: handle exception
-            
-            ResponseTemplate result=new ResponseTemplate(HttpStatus.BAD_REQUEST, e.getMessage(),new ArrayList<Integer>(), null);
-            return new ResponseEntity<ResponseTemplate>(result,null,HttpStatus.BAD_REQUEST);
-
-        }
+        throw new ShipWreckException("testting");
+        
     }
 
     @GetMapping("products")
