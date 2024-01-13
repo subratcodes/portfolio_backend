@@ -1,7 +1,5 @@
 package portfolio.Exceptions;
-
 import java.util.ArrayList;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,6 +16,14 @@ public class GlobalExceptionHandler {
      ResponseTemplate result=new ResponseTemplate(HttpStatus.BAD_REQUEST, e.getMessage(),new ArrayList<Integer>(), null);
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+
+    }
+
+    @ExceptionHandler({NoDataFound.class})
+    public ResponseEntity<ResponseTemplate> handleNoDataFound(NoDataFound err){
+
+        ResponseTemplate result=new ResponseTemplate(HttpStatus.BAD_REQUEST, err.getMessage(),new ArrayList<Integer>(), null);
+         return ResponseEntity.status(result.getStatus()).body(result);
 
     }
 

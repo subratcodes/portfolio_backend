@@ -1,12 +1,9 @@
 package portfolio.Controllers;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.LogManager;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.qos.logback.classic.Logger;
+import portfolio.Exceptions.NoDataFound;
 import portfolio.Exceptions.ShipWreckException;
-import portfolio.Models.Product;
 import portfolio.Models.shipwrecks;
-import portfolio.Service.ShipwreckService;
 import portfolio.Response.ResponseTemplate;
+import portfolio.Service.ShipwreckService;
 
 
 @RestController
@@ -51,8 +47,13 @@ public class ShipWreckCtr {
 
     @GetMapping("shipwrecks/{id}")
     @ResponseBody
-    public Optional<shipwrecks> findById(@PathVariable String id){
-        return shipWreckService.findById(id); 
+    public shipwrecks findById(@PathVariable String id) throws Exception{
+
+        Optional<shipwrecks> info=shipWreckService.findById(id);
+        if(info.isPresent()) return info.get();
+
+        throw new NoDataFound("Not found with id");
+        
     }
 
     
