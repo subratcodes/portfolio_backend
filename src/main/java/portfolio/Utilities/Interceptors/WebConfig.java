@@ -1,21 +1,18 @@
 package portfolio.Utilities.Interceptors;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Autowired
-    HandlerInterceptor intercept;
+    // @Autowired
+    // HandlerInterceptor intercept;
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(intercept);
-    }
+    // @Override
+    // public void addInterceptors(InterceptorRegistry registry) {
+    //     registry.addInterceptor(intercept);
+    // }
 
     
 }
