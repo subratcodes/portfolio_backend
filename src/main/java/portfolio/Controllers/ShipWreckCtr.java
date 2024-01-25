@@ -4,10 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,7 +24,9 @@ import portfolio.Models.shipwrecks;
 import portfolio.Models.Externals.CatFacts;
 import portfolio.Response.CatFactsResTemplate;
 import portfolio.Response.ResponseTemplate;
+import portfolio.Service.CatService;
 import portfolio.Service.ShipwreckService;
+import portfolio.Service.VideoConversion.Conversion;
 
 
 @RestController
@@ -30,10 +36,11 @@ public class ShipWreckCtr {
     @Autowired 
     ShipwreckService shipWreckService;
 
+    @Autowired
+    CatService catService;
 
     @Autowired
-    RestTemplate external;
-
+    Conversion convert;
 
     @GetMapping("/ping")
     public ResponseEntity<ResponseTemplate> test(){
@@ -56,24 +63,37 @@ public class ShipWreckCtr {
     }
 
 
+    @PostMapping("videoConverter")
+    public ResponseEntity<String> performConversion(){
+
+        try {
+            convert.upload();
+            convert.transform();
+            convert.distribute();
+            convert.notify();
+
+            return  new ResponseEntity<>("Hello World!", HttpStatus.OK);
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+
+            return  new ResponseEntity<>("Hello World!", HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
+
+     
+
+
+    }
+
+
+
+
     @GetMapping("cats/{type}")
     public List<CatFacts> getCatFacts(@PathVariable String type){
 
-     try {
-        System.out.println(type);
-         ArrayList<CatFacts> result=external.getForObject("https://cat-fact.herokuapp.com/"+type,ArrayList.class);
-
-        return result;
-  
-     } catch (Exception e) {
-        // TODO: handle exception
-
-         System.out.println(e.getLocalizedMessage());
-         return null; 
-     }
-
-       
-
+        return catService.getFacts(type);
     }
 
     @GetMapping("shipwrecks/{id}")
