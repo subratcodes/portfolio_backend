@@ -13,5 +13,8 @@ public interface ShipwreckService {
 
     Optional<shipwrecks> findById(String id);
 
+    public shipwrecks performShipTransaction(String id);
+    
+
     
 }
