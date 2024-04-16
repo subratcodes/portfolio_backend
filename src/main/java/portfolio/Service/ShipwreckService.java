@@ -3,6 +3,8 @@ package portfolio.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+
 import portfolio.Models.shipwrecks;
 
 public interface ShipwreckService {
@@ -14,7 +16,10 @@ public interface ShipwreckService {
     Optional<shipwrecks> findById(String id);
 
     public shipwrecks performShipTransaction(String id);
-    
+
+    Page<shipwrecks> findPaginatedData(int pageNo);
 
     
 }
+
+

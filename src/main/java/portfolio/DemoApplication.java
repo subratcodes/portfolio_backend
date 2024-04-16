@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
+
 @EnableTransactionManagement
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -17,10 +18,7 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String...args) throws Exception{
-		System.out.println("Command Line runs");
-
-
-		
+		System.out.println("Command Line runs");		
 
 	}
 
