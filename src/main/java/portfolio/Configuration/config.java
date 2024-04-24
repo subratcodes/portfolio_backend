@@ -25,11 +25,8 @@ public class config {
         executor.setThreadNamePrefix("Custom task being performed");
         executor.initialize();
         return executor;
-        
 
     }
-
-    
 
 
 }

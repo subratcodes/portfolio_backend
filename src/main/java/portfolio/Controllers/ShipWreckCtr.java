@@ -58,8 +58,8 @@ public class ShipWreckCtr {
     }
 
     @GetMapping("/shipwrecks/count")
-    public Long getCount(@RequestParam("id") int id){
-        System.out.println(id);
+    public Long getCount(){
+
        return shipWreckService.count();
        
     }
