@@ -12,7 +12,6 @@ import java.util.Optional;
 @RequestMapping(path="/auth/v1")
 public class UserAuth {
 
-
     UserService userService;
 
     public UserAuth(UserService service){
@@ -20,7 +19,7 @@ public class UserAuth {
     }
 
 
-    @PostMapping("/user")
+    @PostMapping("/createUser")
     public ResponseEntity<String> login(@RequestBody User user) {
 
        Optional<User> result=userService.createUser(user);
@@ -31,16 +30,17 @@ public class UserAuth {
 
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<String> getUser(@RequestBody User user) {
 
-        Optional<User> result=userService.getUserByUsername(user.getUserName());
-
-        if(result.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        }else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-    }
+//    @GetMapping("/user")
+//    public ResponseEntity<String> getUser(@RequestBody User user) {
+//
+//        Optional<User> result=userService.getUserByUsername(user.getUserName());
+//
+//        if(result.isPresent()) {
+//            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+//        }else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//
+//    }
 
 
 

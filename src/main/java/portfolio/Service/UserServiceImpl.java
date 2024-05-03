@@ -26,7 +26,6 @@ public class UserServiceImpl  implements UserService{
                 User result=userRepository.save(user);
             return Optional.of(result);
 
-
         }
 
         return Optional.empty();
