@@ -4,9 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import portfolio.Models.User;
 import portfolio.Service.UserService;
-
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping(path="/auth/v1")
