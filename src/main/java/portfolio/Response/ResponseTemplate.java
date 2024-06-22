@@ -21,6 +21,11 @@ import org.springframework.http.HttpStatus;
         this.customHeader=header;
     }
 
+
+    public ResponseTemplate(HttpStatus status){
+        this.status=status;
+    }
+
      public ResponseTemplate(List<?>data, HttpStatus status) {
          this.data = data;
          this.status = status;

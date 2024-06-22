@@ -23,7 +23,6 @@ public class MongoUserDetails implements UserDetailsService {
       UserRepository userRepo;  
 
 
-    
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -40,6 +39,5 @@ public class MongoUserDetails implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(userInfo.getEmail(),userInfo.getPassword(), autority);
     }
 
-    
     
 }

@@ -58,9 +58,8 @@ public class MongoAuthenticationProvider implements AuthenticationProvider {
 
     private Authentication checkPassword(UserDetails storedUser, String rawPassword){
 
-        System.out.println(encoder.encode(rawPassword).equals(storedUser.getPassword()));
-
-        if(encoder.encode(rawPassword).equals(storedUser.getPassword())) return new UsernamePasswordAuthenticationToken(storedUser.getUsername(),storedUser.getPassword(),storedUser.getAuthorities());
+        
+        if(encoder.matches(rawPassword, storedUser.getPassword())) return new UsernamePasswordAuthenticationToken(storedUser.getUsername(),storedUser.getPassword(),storedUser.getAuthorities());
         else  throw new BadCredentialsException("Bad credentials");
 
 

@@ -32,7 +32,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filter(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize->authorize.requestMatchers(HttpMethod.POST,"/auth/v1/createUser").permitAll()
+        http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1").permitAll()
         .requestMatchers("/api/v1/productsV2").authenticated()
                 .anyRequest().authenticated()
         ).formLogin(Customizer.withDefaults());
