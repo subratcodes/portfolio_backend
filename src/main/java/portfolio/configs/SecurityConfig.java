@@ -19,7 +19,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig {
 
 
@@ -30,12 +29,19 @@ public class SecurityConfig {
         this.mongoAuth=mn;
     }
 
+    /**
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain filter(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1").permitAll()
-        .requestMatchers("/api/v1/productsV2").authenticated()
-                .anyRequest().authenticated()
-        ).formLogin(Customizer.withDefaults());
+        // http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1").permitAll()
+        // .anyRequest().authenticated()).httpBasic(Customizer.withDefaults())
+        // .formLogin(Customizer.withDefaults());
+
+        http.authorizeHttpRequests(authorize->authorize.anyRequest().permitAll());
+        
 
         // disabled CSRF tokens.
          http.csrf(AbstractHttpConfigurer::disable); 
@@ -43,13 +49,14 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder = 
-            http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.authenticationProvider(mongoAuth);
-        return authenticationManagerBuilder.build();
-    }
+    // authentication manager manages to load users where you want to
+    // @Bean
+    // public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+    //     AuthenticationManagerBuilder authenticationManagerBuilder = 
+    //         http.getSharedObject(AuthenticationManagerBuilder.class);
+    //     authenticationManagerBuilder.authenticationProvider(mongoAuth);
+    //     return authenticationManagerBuilder.build();
+    // }
 
 
     @Bean

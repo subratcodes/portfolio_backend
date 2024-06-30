@@ -23,11 +23,12 @@ import portfolio.Response.ResponseTemplate;
 import portfolio.Service.CatService;
 import portfolio.Service.ShipwreckService;
 import portfolio.Service.VideoConversion.Conversion;
+import portfolio.beans.Coach;
 
 
 
 @RestController
-@RequestMapping(path="/api/v1/")
+@RequestMapping(path="/api/v1")
 public class ShipWreckCtr {
 
     @Autowired 
@@ -39,6 +40,16 @@ public class ShipWreckCtr {
     @Autowired
     Conversion convert;
 
+    @Autowired
+    Coach ch;
+
+
+    @GetMapping("/coach")
+    public String getMethodName(@RequestParam String param) {
+        return ch.toString();
+    }
+    
+
     @GetMapping("/ping")
     public ResponseEntity<ResponseTemplate> test(){
 
@@ -46,13 +57,13 @@ public class ShipWreckCtr {
         
     }
 
-    @GetMapping("products")
+    @GetMapping("/products")
     public HttpEntity<List<shipwrecks>> productList(@RequestParam("page") int pageNo){
 
         return new HttpEntity<>(shipWreckService.findAll());
     }
 
-    @GetMapping("productsV2")
+    @GetMapping("/productsV2")
     public Page<shipwrecks> findPaginated(@RequestParam("page") int pageNo){
         return shipWreckService.findPaginatedData(pageNo);
     }
@@ -65,7 +76,7 @@ public class ShipWreckCtr {
     }
 
 
-    @PostMapping("videoConverter")
+    @PostMapping("/videoConverter")
     public ResponseEntity<String> performConversion(){
 
         try {
@@ -94,7 +105,7 @@ public class ShipWreckCtr {
         return catService.getFacts(type);
     }
 
-    @GetMapping("shipwrecks/{id}")
+    @GetMapping("/shipwrecks/{id}")
     @ResponseBody
     public shipwrecks findById(@PathVariable String id) throws Exception{
 

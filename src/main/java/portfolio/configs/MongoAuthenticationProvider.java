@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.stereotype.Service;
 
 import portfolio.Service.UserDetails.MongoUserDetails;
@@ -30,8 +31,7 @@ public class MongoAuthenticationProvider implements AuthenticationProvider {
         this.encoder=encoder;
     }
 
-
-
+        
 
     @Override
     public Authentication authenticate(Authentication authentication)
