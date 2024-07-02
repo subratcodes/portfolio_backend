@@ -3,6 +3,7 @@ package portfolio.Service.UserService;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +25,8 @@ public class UserAccoutService {
     PasswordEncoder encoder;
 
 
+
+    @PreAuthorize("hasRole('ROOT')")
     public boolean createUser(User newUser){
 
         // think about the validation that you would use.
