@@ -13,9 +13,8 @@ import portfolio.Response.ResponseTemplate;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-
-   private static final Logger logger=LoggerFactory.getLogger(GlobalExceptionHandler.class);
-
+    Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+`
     @ExceptionHandler({ShipWreckException.class}) //why do we use this ? why do we take this ?
     public ResponseEntity<ResponseTemplate> handleShipWreckError(ShipWreckException e){
         

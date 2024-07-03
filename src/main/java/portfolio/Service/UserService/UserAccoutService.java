@@ -26,7 +26,6 @@ public class UserAccoutService {
 
 
 
-    @PreAuthorize("hasRole('ROOT')")
     public boolean createUser(User newUser){
 
         // think about the validation that you would use.
