@@ -11,8 +11,6 @@ import portfolio.configs.EnvionmentConfigs;
 
 
 
-
-
 @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true )
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
