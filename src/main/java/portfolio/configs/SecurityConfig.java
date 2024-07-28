@@ -15,18 +15,21 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.SecurityFilterChain;
 
+import jakarta.servlet.FilterChain;
 
 @Configuration
 public class SecurityConfig {
 
 
     
-    private AuthenticationProvider mongoAuth;
 
-    public SecurityConfig(MongoAuthenticationProvider mn){
-        this.mongoAuth=mn;
+    // private AuthenticationProvider mongoAuth;
+
+    public SecurityConfig(){
+  
     }
 
     /**

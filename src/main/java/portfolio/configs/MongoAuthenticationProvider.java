@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import portfolio.Service.UserDetails.MongoUserDetails;
 
-@Service
+
 public class MongoAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
