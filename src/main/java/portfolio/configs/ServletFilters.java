@@ -2,23 +2,27 @@ package portfolio.configs;
 
 import java.io.IOException;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 
-// public class ServletFilters implements Filter {
 
-//     @Override
-//     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-//             throws IOException, ServletException {
-//         // TODO Auto-generated method stub
+@Component
+public class ServletFilters implements Filter {
 
-//         String attribute=(String) request.getAttribute("test");
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        // TODO Auto-generated method stub
+
+        String attribute=(String) request.getAttribute("test");
                 
-//     }
+    }
 
     
     
-// }
+}

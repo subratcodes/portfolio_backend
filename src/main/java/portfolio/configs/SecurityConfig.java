@@ -23,9 +23,6 @@ import jakarta.servlet.FilterChain;
 @Configuration
 public class SecurityConfig {
 
-
-    
-
     // private AuthenticationProvider mongoAuth;
 
     public SecurityConfig(){

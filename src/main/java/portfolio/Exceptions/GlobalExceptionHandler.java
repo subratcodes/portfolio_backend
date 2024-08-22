@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.client.HttpClientErrorException;
 
 import portfolio.Response.ResponseTemplate;
 
@@ -26,6 +27,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);  
 
     }
+    
+
+    @ExceptionHandler(HttpClientErrorException.class)
+    public ResponseEntity<ResponseTemplate> handleHttpClientError(HttpClientErrorException e){
+
+        ResponseTemplate result=new ResponseTemplate(HttpStatus.BAD_REQUEST, e.getMessage(),new ArrayList<Integer>(), null);
+        return ResponseEntity.status(result.getStatus()).body(result);
+    } 
 
     @ExceptionHandler({NoDataFound.class})
     public ResponseEntity<ResponseTemplate> handleNoDataFound(NoDataFound err){

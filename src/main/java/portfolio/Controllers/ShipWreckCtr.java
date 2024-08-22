@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import portfolio.Exceptions.NoDataFound;
@@ -48,7 +49,7 @@ public class ShipWreckCtr {
     public String getMethodName(@RequestParam String param) {
         return ch.toString();
     }
-    
+
 
     @GetMapping("/ping")
     public ResponseEntity<ResponseTemplate> test(){
@@ -74,7 +75,6 @@ public class ShipWreckCtr {
        return shipWreckService.count();
        
     }
-
 
     @PostMapping("/videoConverter")
     public ResponseEntity<String> performConversion(){
