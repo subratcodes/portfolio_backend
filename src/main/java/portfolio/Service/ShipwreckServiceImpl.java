@@ -76,9 +76,6 @@ public class ShipwreckServiceImpl implements ShipwreckService {
         } catch (Exception e) {
             // TODO: handle exception
 
-
-
-
         }
 
         // TODO Auto-generated method stub

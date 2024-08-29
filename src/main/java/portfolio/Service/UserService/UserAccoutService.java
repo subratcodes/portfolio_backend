@@ -3,6 +3,7 @@ package portfolio.Service.UserService;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +19,7 @@ public class UserAccoutService {
 
     @Autowired
     UserRepository userRepo;
+
 
 
     @Autowired

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -23,9 +24,6 @@ import jakarta.servlet.FilterChain;
 @Configuration
 public class SecurityConfig {
 
-
-    
-
     // private AuthenticationProvider mongoAuth;
 
     public SecurityConfig(){
@@ -37,6 +35,7 @@ public class SecurityConfig {
      * @return
      * @throws Exception
      */
+    @Profile("dev")
     @Bean
     public SecurityFilterChain filter(HttpSecurity http) throws Exception {
         // http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1").permitAll()

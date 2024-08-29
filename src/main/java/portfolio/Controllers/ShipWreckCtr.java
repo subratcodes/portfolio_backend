@@ -22,6 +22,7 @@ import portfolio.Models.Externals.CatFacts;
 import portfolio.Response.ResponseTemplate;
 import portfolio.Service.CatService;
 import portfolio.Service.ShipwreckService;
+import portfolio.Service.CoachService.CoachServiceContract;
 import portfolio.Service.VideoConversion.Conversion;
 import portfolio.beans.Coach;
 
@@ -40,15 +41,14 @@ public class ShipWreckCtr {
     @Autowired
     Conversion convert;
 
-    @Autowired
-    Coach ch;
-
+   @Autowired
+   CoachServiceContract coachService;
 
     @GetMapping("/coach")
-    public String getMethodName(@RequestParam String param) {
-        return ch.toString();
+    public String getMethodName() {
+        return coachService.getData();
     }
-    
+
 
     @GetMapping("/ping")
     public ResponseEntity<ResponseTemplate> test(){

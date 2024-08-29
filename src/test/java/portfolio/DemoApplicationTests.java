@@ -12,19 +12,16 @@ import portfolio.Service.ShipwreckService;
 import portfolio.Service.ShipwreckServiceImpl;
 
 
+@SpringBootTest
 class DemoApplicationTests {
 
 
-
-	ShipwreckService service=new ShipwreckServiceImpl();
-
-
-
+	@Autowired
+	ShipwreckService service;
 
 	@Test
 	@DisplayName("Context has been loaded")
 	void contextLoads() {
-
 
 	}
 
@@ -33,7 +30,7 @@ class DemoApplicationTests {
 	public void testCount(){
 		 long count=service.count();
 
-		 assertEquals(244,count);
+		 assertEquals(11095,count);
 	
 	
 	
