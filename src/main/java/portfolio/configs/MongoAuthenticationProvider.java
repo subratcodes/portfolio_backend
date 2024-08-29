@@ -1,7 +1,5 @@
 package portfolio.configs;
-
 import javax.naming.AuthenticationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -14,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.stereotype.Service;
-
 import portfolio.Service.UserDetails.MongoUserDetails;
 
 
@@ -32,7 +29,6 @@ public class MongoAuthenticationProvider implements AuthenticationProvider {
     }
 
         
-
     @Override
     public Authentication authenticate(Authentication authentication)
             throws org.springframework.security.core.AuthenticationException {

@@ -7,6 +7,8 @@ import portfolio.Models.Externals.CatFacts;
 public interface CatService {
 
     List<CatFacts> getFacts(String type);
+    List<CatFacts> getFactsviaWebClient(String type);
+
 
     
 }
