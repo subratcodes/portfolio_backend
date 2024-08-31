@@ -43,7 +43,6 @@ class DemoApplicationTests {
 		try {
 			mvc.perform(MockMvcRequestBuilders.get("/api/v1/productsV2?page=0")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType("application/json"))
 			.andExpect((ResultMatcher) MockMvcResultMatchers.jsonPath("latdec",isA(Integer.class)));
-
 		
 		
 		} catch (Exception e) {
