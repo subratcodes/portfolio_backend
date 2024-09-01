@@ -22,21 +22,25 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-
     
     private AuthenticationProvider mongoAuth;
-
+    // injection by setter injection.
     public SecurityConfig(MongoAuthenticationProvider mn){
         this.mongoAuth=mn;
     }
 
     @Bean
     public SecurityFilterChain filter(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1").permitAll()
-        .requestMatchers("/api/v1/productsV2").authenticated()
-                .anyRequest().authenticated()
-        ).formLogin(Customizer.withDefaults());
 
+        http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1/user").permitAll()
+                .requestMatchers("/api/v1/videoConverter").permitAll()
+                .requestMatchers("/api/v1/productsV2").authenticated()
+                .anyRequest().authenticated()
+        );
+
+
+        http.formLogin(flc->flc.disable());
+        http.httpBasic(Customizer.withDefaults());
         // disabled CSRF tokens.
          http.csrf(AbstractHttpConfigurer::disable); 
 

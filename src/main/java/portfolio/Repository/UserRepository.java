@@ -14,3 +14,8 @@ public interface UserRepository extends MongoRepository<User,String> {
     Optional<User> findByUserName(String username);
     Optional<User> findByEmail(String email);
 }
+
+
+
+// Todo  ::: Why do we create our own query ovher here.
+//Todo ::: Why do we use this as well.

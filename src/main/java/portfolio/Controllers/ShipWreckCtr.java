@@ -1,12 +1,15 @@
 package portfolio.Controllers;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.web.headers.HeadersSecurityMarker;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +50,7 @@ public class ShipWreckCtr {
     }
 
     @GetMapping("products")
+    @HeadersSecurityMarker
     public HttpEntity<List<shipwrecks>> productList(@RequestParam("page") int pageNo){
 
         return new HttpEntity<>(shipWreckService.findAll());
@@ -69,12 +73,22 @@ public class ShipWreckCtr {
     public ResponseEntity<String> performConversion(){
 
         try {
-            convert.upload();
-            convert.transform();
-            convert.distribute();
-            convert.notify();
+           CompletableFuture<String> upload=convert.upload();
+            CompletableFuture<String> future= convert.transform();
+            CompletableFuture<String> distribute=convert.distribute();
+            CompletableFuture<String> notify=convert.notifyUser();
 
-            return  new ResponseEntity<>("Hello World!", HttpStatus.OK);
+          CompletableFuture result= CompletableFuture.allOf(upload,future,distribute,notify);
+
+          StringBuffer buffer=new StringBuffer();
+           buffer.append(upload.get());
+            buffer.append(future.get());
+            buffer.append(distribute.get());
+            buffer.append(notify.get());
+
+
+
+            return  new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -86,7 +100,6 @@ public class ShipWreckCtr {
 
     
     }
-
 
     @GetMapping("cats/{type}")
     public List<CatFacts> getCatFacts(@PathVariable String type){

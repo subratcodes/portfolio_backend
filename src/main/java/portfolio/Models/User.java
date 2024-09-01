@@ -1,20 +1,16 @@
 package portfolio.Models;
-
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
-
 import com.mongodb.lang.NonNull;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Document("User")
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @MongoId
     private String id;
@@ -22,4 +18,11 @@ public class User {
     private String password;
     @NonNull
     private String email;
+    @NonNull
+    SimpleGrantedAuthority authority;
+
+    public User(String email,String password){
+        this.email=email;
+        this.password=password;
+    }
 }

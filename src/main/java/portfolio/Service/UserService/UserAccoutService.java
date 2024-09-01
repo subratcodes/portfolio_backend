@@ -58,6 +58,14 @@ public class UserAccoutService {
 
     }
 
+
+    public boolean doesUserExist(String email){
+
+       Optional<User>user=userRepo.findByEmail(email);
+
+        return user.isPresent();
+    }
+
     public boolean deleteUser(User newUser){
 
         try {

@@ -22,15 +22,12 @@ public class MongoAuthenticationProvider implements AuthenticationProvider {
     @Autowired
    private MongoUserDetails userDetails;
 
-
-  private  PasswordEncoder encoder;
+     private  PasswordEncoder encoder;
 
     @Autowired
     public MongoAuthenticationProvider( @Lazy BCryptPasswordEncoder encoder){
         this.encoder=encoder;
     }
-
-
 
 
     @Override
@@ -58,10 +55,8 @@ public class MongoAuthenticationProvider implements AuthenticationProvider {
 
     private Authentication checkPassword(UserDetails storedUser, String rawPassword){
 
-        
         if(encoder.matches(rawPassword, storedUser.getPassword())) return new UsernamePasswordAuthenticationToken(storedUser.getUsername(),storedUser.getPassword(),storedUser.getAuthorities());
         else  throw new BadCredentialsException("Bad credentials");
-
 
     }
 

@@ -1,10 +1,11 @@
 package portfolio.Response;
 import java.net.http.HttpHeaders;
 import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;
+
+
 @Setter
 @Getter
  public class ResponseTemplate{

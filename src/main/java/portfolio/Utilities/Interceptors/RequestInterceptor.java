@@ -18,7 +18,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
       String reqHeader=request.getHeader("Connection");
-      logger.info("Reqeust Found");
+      logger.info("Reqeust Found"+request.getMethod());
        return true;
 
     }
@@ -26,7 +26,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("LogHandlerInterceptor::postHandle()");
-        logger.info("Post handle runs now");
+        logger.info("Post handle runs now"+request.getRequestURI()+request.getMethod());
         
     }
 

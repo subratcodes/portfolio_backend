@@ -1,11 +1,13 @@
 package portfolio.Service.VideoConversion;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface Conversion {
     
-    void upload() throws InterruptedException;
-    void transform() throws InterruptedException;
-    void distribute() throws InterruptedException;
-    void notifyUser() throws InterruptedException;
+    CompletableFuture<String> upload() throws InterruptedException;
+    CompletableFuture<String> transform() throws InterruptedException;
+    CompletableFuture<String> distribute() throws InterruptedException;
+    CompletableFuture<String> notifyUser() throws InterruptedException;
 
 }
 

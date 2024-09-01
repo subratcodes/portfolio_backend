@@ -19,7 +19,6 @@ public interface ShipwreckService {
 
     Page<shipwrecks> findPaginatedData(int pageNo);
 
-    
 }
 
 
