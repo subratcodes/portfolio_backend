@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import portfolio.Models.Externals.accounts;
+import portfolio.Service.accountsService.accountServiceContract;
+
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -16,16 +18,12 @@ public class accountsCtr {
 
 
     @Autowired
-    accounts accountService;
-
+    accountServiceContract accountService;
 
     
     @GetMapping("/getAllAccounts")
     public Page<accounts> getAccounts(@RequestParam("page") int pageNo){
-
-        accountService.
-
-
+      return accountService.findAll(pageNo);
     }
 
 
