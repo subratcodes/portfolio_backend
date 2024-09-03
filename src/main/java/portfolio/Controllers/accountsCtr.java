@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping("/accounts/v1")
+@RequestMapping("/api/v1/")
 public class accountsCtr {
 
 
@@ -21,15 +21,10 @@ public class accountsCtr {
     accountServiceContract accountService;
 
     
-    @GetMapping("/getAllAccounts")
+    @GetMapping("getAllAccounts")
     public Page<accounts> getAccounts(@RequestParam("page") int pageNo){
       return accountService.findAll(pageNo);
     }
-
-
-
-
-
 
 
 

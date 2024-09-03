@@ -34,7 +34,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1/user").permitAll()
                 .requestMatchers("/api/v1/videoConverter").permitAll()
                 .requestMatchers("/api/v1/productsV2").permitAll()
-                .requestMatchers("/accounts/v1/getAllAccounts").permitAll()
+                .requestMatchers("/api/v1/getAllAccounts").permitAll()
                 .anyRequest().authenticated()
         );
 

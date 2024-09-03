@@ -42,7 +42,7 @@ public class ShipWreckCtr {
     @Autowired
     Conversion convert;
 
-    @GetMapping("/ping")
+    @GetMapping("ping")
     public ResponseEntity<ResponseTemplate> test(){
 
         throw new ShipWreckException("testting");
