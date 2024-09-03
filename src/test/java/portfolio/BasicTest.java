@@ -7,8 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import portfolio.Service.ShipwreckService;
-import portfolio.Service.ShipwreckServiceImpl;
+
+import portfolio.Service.Shipwreck.ShipwreckService;
+import portfolio.Service.Shipwreck.ShipwreckServiceImpl;
 
 
 @SpringBootTest

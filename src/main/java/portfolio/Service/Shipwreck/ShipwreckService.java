@@ -1,4 +1,4 @@
-package portfolio.Service;
+package portfolio.Service.Shipwreck;
 
 import java.util.List;
 import java.util.Optional;

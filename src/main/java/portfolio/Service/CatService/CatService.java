@@ -1,4 +1,4 @@
-package portfolio.Service;
+package portfolio.Service.CatService;
 
 import java.util.List;
 

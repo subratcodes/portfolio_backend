@@ -23,8 +23,8 @@ import portfolio.Exceptions.ShipWreckException;
 import portfolio.Models.shipwrecks;
 import portfolio.Models.Externals.CatFacts;
 import portfolio.Response.ResponseTemplate;
-import portfolio.Service.CatService;
-import portfolio.Service.ShipwreckService;
+import portfolio.Service.CatService.CatService;
+import portfolio.Service.Shipwreck.ShipwreckService;
 import portfolio.Service.VideoConversion.Conversion;
 
 

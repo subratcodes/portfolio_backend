@@ -1,4 +1,4 @@
-package portfolio.Service;
+package portfolio.Service.Shipwreck;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +9,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.repository.Query;
 
 import portfolio.Models.shipwrecks;
 import portfolio.Repository.PaginatedShiprwreck;
@@ -21,6 +24,10 @@ public class ShipwreckServiceImpl implements ShipwreckService {
 
     @Autowired
     ShipwreckRepository repo;
+
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     @Autowired
     PaginatedShiprwreck paginatedRepo;
@@ -46,6 +53,8 @@ public class ShipwreckServiceImpl implements ShipwreckService {
          return repo.findAll(pageable);
 
     }
+
+
 
 
     @Override

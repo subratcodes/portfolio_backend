@@ -1,6 +1,4 @@
 package portfolio.mock.service;
-
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,14 +11,12 @@ import org.springframework.data.domain.*;
 import portfolio.Models.shipwrecks;
 import portfolio.Repository.PaginatedShiprwreck;
 import portfolio.Repository.ShipwreckRepository;
-import portfolio.Service.ShipwreckService;
-import portfolio.Service.ShipwreckServiceImpl;
+import portfolio.Service.Shipwreck.ShipwreckService;
+import portfolio.Service.Shipwreck.ShipwreckServiceImpl;
 
 import org.springframework.data.domain.PageRequest;
-
 import java.util.Collections;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
@@ -47,7 +43,7 @@ private PaginatedShiprwreck paginatedData;
 
         // what we are mocking over here is the repo layer. and we are returning repo repsonse .reather than not calling the repo.
 
-            when(repository.count()).thenReturn(Long.valueOf(20206));
+            when(repository.count()).thenReturn(Long.valueOf(2006));
 
             Long count=shipwreckService.count();
 
