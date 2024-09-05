@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -28,6 +29,19 @@ public class SecurityConfig {
         this.mongoAuth=mn;
     }
 
+
+    @Profile("dev")
+    @Bean
+    public SecurityFilterChain filterDev(HttpSecurity http) throws Exception{
+        
+        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+        http.formLogin(flc->flc.disable());
+        return http.build();
+
+        
+    }
+
+    @Profile("!dev")
     @Bean
     public SecurityFilterChain filter(HttpSecurity http) throws Exception {
 
