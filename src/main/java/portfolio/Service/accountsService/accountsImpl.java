@@ -30,9 +30,9 @@ public class accountsImpl implements accountServiceContract {
 
     @Override
     public Page<accounts> findAll(int pageNo) {
-
+        //blocking call for the template.
         accountsResponse result=template.getForObject(url+"/getAllAccounts?page="+pageNo, accountsResponse.class);
-        Page<accounts> result2=new PageImpl<>(result.getContent());
+        Page<accounts> result2=new PageImpl<>(result.getContent(), PageRequest.of(pageNo,10),result.getTotalElements());
         return result2;   
 
         

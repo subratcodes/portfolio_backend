@@ -29,7 +29,6 @@ public class SecurityConfig {
         this.mongoAuth=mn;
     }
 
-
     @Profile("dev")
     @Bean
     public SecurityFilterChain filterDev(HttpSecurity http) throws Exception{
@@ -37,8 +36,6 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
         http.formLogin(flc->flc.disable());
         return http.build();
-
-        
     }
 
     @Profile("!dev")
@@ -52,12 +49,10 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
         );
 
-
         http.formLogin(flc->flc.disable());
         http.httpBasic(Customizer.withDefaults());
         // disabled CSRF tokens.
          http.csrf(AbstractHttpConfigurer::disable); 
-
         return http.build();
     }
 

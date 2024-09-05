@@ -63,11 +63,5 @@ public class MongoAuthenticationProvider implements AuthenticationProvider {
 
     
 
-
-
-
-    
-
-
     
 }

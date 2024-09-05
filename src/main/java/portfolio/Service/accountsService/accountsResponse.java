@@ -24,5 +24,6 @@ import portfolio.Models.Externals.accounts;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class accountsResponse{
     List<accounts> content;
-    
+    int totalPages;
+    int totalElements;
 }
