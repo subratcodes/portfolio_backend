@@ -61,7 +61,7 @@ public class ShipWreckCtr {
         return shipWreckService.findPaginatedData(pageNo);
     }
 
-    @GetMapping("/shipwrecks/count")
+    @GetMapping("shipwrecks/count")
     public Long getCount(){
 
        return shipWreckService.count();

@@ -1,5 +1,6 @@
 package portfolio.Service.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,9 +94,12 @@ public class UserAccoutService {
 
     }
 
-
-
-
+    public List<User> getAllAccounts(){
+       
+        List<User> result=userRepo.findAll();
+        return result;
     
+    }
+
     
 }

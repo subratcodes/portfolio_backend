@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
     @MongoId
     private String id;
@@ -19,10 +20,6 @@ public class User {
     @NonNull
     private String email;
     @NonNull
-    SimpleGrantedAuthority authority;
-
-    public User(String email,String password){
-        this.email=email;
-        this.password=password;
-    }
+    String role="user";
+    
 }

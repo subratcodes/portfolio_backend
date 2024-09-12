@@ -1,8 +1,10 @@
 package portfolio.Service.UserDetails;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,13 +30,15 @@ public class MongoUserDetails implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         Optional<User> info=userRepo.findByEmail(email);
-        List<GrantedAuthority> autority=new ArrayList<>();
+
+        Set<GrantedAuthority> autority=new HashSet<GrantedAuthority>();
+        
         System.out.println(info.toString());
 
         if(!info.isPresent()) throw new UsernameNotFoundException("Not valid credentials");
 
         User userInfo=info.get();
-        autority.add(new SimpleGrantedAuthority("ROLE_USER"));
+        autority.add(new SimpleGrantedAuthority(userInfo.getRole()));
 
         return new org.springframework.security.core.userdetails.User(userInfo.getEmail(),userInfo.getPassword(), autority);
     }

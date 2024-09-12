@@ -19,5 +19,6 @@ public class UserCreationRequest {
     @NotEmpty(message = "password cannot be empty")
     @NotNull(message="Password fields are missing")
     private String email;
+    private String role;
 
 }

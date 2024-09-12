@@ -2,6 +2,7 @@ package portfolio.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
+import org.springframework.boot.actuate.data.mongo.MongoHealthIndicator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -23,6 +24,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     
+
+    
     private AuthenticationProvider mongoAuth;
     // injection by setter injection.
     public SecurityConfig(MongoAuthenticationProvider mn){
@@ -32,9 +35,13 @@ public class SecurityConfig {
     @Profile("dev")
     @Bean
     public SecurityFilterChain filterDev(HttpSecurity http) throws Exception{
-        
-        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
-        http.formLogin(flc->flc.disable());
+
+        http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1/users").hasRole("ADMIN").anyRequest().permitAll()).formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
+   
+        // http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+    
+        //disables the CSRF validation.
+        http.csrf(AbstractHttpConfigurer::disable); 
         return http.build();
     }
 
@@ -69,5 +76,7 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    
 
 }
