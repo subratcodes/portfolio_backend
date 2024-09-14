@@ -26,8 +26,7 @@ public class ShipwreckServiceImpl implements ShipwreckService {
     ShipwreckRepository repo;
 
 
-    @Autowired
-    MongoTemplate mongoTemplate;
+
 
     @Autowired
     PaginatedShiprwreck paginatedRepo;

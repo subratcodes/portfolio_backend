@@ -9,8 +9,8 @@ import com.mongodb.lang.NonNull;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
 @Builder
+@Document(collection = "shipwrecks")
 public class shipwrecks {
 
     @Id

@@ -1,11 +1,14 @@
 package portfolio.configs;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
 import org.springframework.boot.actuate.data.mongo.MongoHealthIndicator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -18,6 +21,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.mongodb.client.internal.MongoClientImpl;
 
 
 @Configuration
@@ -36,9 +41,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterDev(HttpSecurity http) throws Exception{
 
-        http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1/users").hasRole("ADMIN").anyRequest().permitAll()).formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
+        // http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1/users").hasRole("ADMIN").anyRequest().permitAll()).formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
    
-        // http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
     
         //disables the CSRF validation.
         http.csrf(AbstractHttpConfigurer::disable); 

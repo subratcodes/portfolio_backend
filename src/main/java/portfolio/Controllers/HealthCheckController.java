@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import portfolio.Health.DatabaseHealth;
 
-@Component
 public class HealthCheckController {
 
     @Autowired

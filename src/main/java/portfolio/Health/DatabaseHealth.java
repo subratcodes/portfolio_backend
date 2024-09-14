@@ -2,6 +2,7 @@ package portfolio.Health;
 
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.actuate.data.mongo.MongoHealthIndicator;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.health.Health;
@@ -12,9 +13,10 @@ import org.springframework.stereotype.Controller;
 
 
 
-@Component
+
 public class DatabaseHealth implements HealthIndicator {
 
+    @Qualifier("sample_geospatial_mongoTemplate")
     private MongoTemplate template;
 
    public DatabaseHealth(MongoTemplate template){
