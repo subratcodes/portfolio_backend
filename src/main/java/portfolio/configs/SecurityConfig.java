@@ -41,9 +41,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterDev(HttpSecurity http) throws Exception{
 
-        // http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1/users").hasRole("ADMIN").anyRequest().permitAll()).formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
+         http.authorizeHttpRequests(authorize->authorize.requestMatchers("/userAccounts/v1/users").hasAuthority("ADMIN").anyRequest().permitAll())
+         .formLogin(Customizer.withDefaults())
+         .httpBasic(Customizer.withDefaults());
    
-        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+       // http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
     
         //disables the CSRF validation.
         http.csrf(AbstractHttpConfigurer::disable); 

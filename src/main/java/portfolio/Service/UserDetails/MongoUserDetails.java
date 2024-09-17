@@ -31,16 +31,16 @@ public class MongoUserDetails implements UserDetailsService {
 
         Optional<User> info=userRepo.findByEmail(email);
 
-        Set<GrantedAuthority> autority=new HashSet<GrantedAuthority>();
+        List<GrantedAuthority> authority=new ArrayList<GrantedAuthority>();
         
         System.out.println(info.toString());
 
         if(!info.isPresent()) throw new UsernameNotFoundException("Not valid credentials");
 
         User userInfo=info.get();
-        autority.add(new SimpleGrantedAuthority(userInfo.getRole()));
+        authority.add(new SimpleGrantedAuthority(userInfo.getRole()));
 
-        return new org.springframework.security.core.userdetails.User(userInfo.getEmail(),userInfo.getPassword(), autority);
+        return new org.springframework.security.core.userdetails.User(userInfo.getEmail(),userInfo.getPassword(), authority);
     }
 
     
