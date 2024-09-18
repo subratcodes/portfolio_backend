@@ -2,9 +2,11 @@ package portfolio;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -35,7 +37,12 @@ public class DemoApplication implements CommandLineRunner {
 
 
 	@Autowired
-	 private ShipwreckRepository shipwreckRepository; 
+	 private ShipwreckRepository shipwreckRepository;
+	 
+	 
+	 @Autowired
+	 @Qualifier("sample_mflix_mongoTemplate")
+	 private MongoTemplate template;
 
 
 
@@ -48,12 +55,17 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String...args) throws Exception{
 
-		log.info("The theator repo works");
 
-		List<shipwrecks> getTheators= shipwreckRepository.findAll();
 
-		getTheators.stream().limit(10).forEach( a->System.out.println(a.get_id()));
+		// log.info("The theator repo works");
 
+		 List<Theaters> getTheators= theaterRepository.findAll();
+
+		 getTheators.stream().limit(10).forEach( a->System.out.println(a.get_id()));
+
+	//  List<Theaters> result=template.findAll(Theaters.class);
+
+	//  result.stream().limit(10).forEach(a->System.out.println(a));
 
 	}
 

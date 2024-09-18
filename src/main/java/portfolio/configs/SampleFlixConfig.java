@@ -24,6 +24,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.internal.MongoClientImpl;
 
 import lombok.extern.slf4j.Slf4j;
+import portfolio.Models.Samplemflix.Theaters;
 import portfolio.Repository.ShipwreckRepository;
 import portfolio.Repository.Samplemflix.TheaterRepository;
 
@@ -31,7 +32,7 @@ import portfolio.Repository.Samplemflix.TheaterRepository;
 
 @Configuration
 @Slf4j
-//  @EnableMongoRepositories(basePackageClasses = TheaterRepository.class, mongoTemplateRef = "sample_mflix_mongoTemplate")
+//@EnableMongoRepositories(basePackageClasses =TheaterRepository.class, mongoTemplateRef = "sample_mflix_mongoTemplate")
 @EnableConfigurationProperties
 public class SampleFlixConfig {
 

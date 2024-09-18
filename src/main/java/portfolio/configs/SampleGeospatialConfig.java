@@ -24,7 +24,7 @@ import portfolio.Repository.ShipwreckRepository;
 import portfolio.Repository.UserRepository;
 
 @Configuration
-@EnableMongoRepositories(basePackageClasses = ShipwreckRepository.class, mongoTemplateRef = "sample_geospatial_mongoTemplate")
+//@EnableMongoRepositories(basePackageClasses = ShipwreckRepository.class, mongoTemplateRef = "sample_geospatial_mongoTemplate")
 @EnableConfigurationProperties
 public class SampleGeospatialConfig {
    
