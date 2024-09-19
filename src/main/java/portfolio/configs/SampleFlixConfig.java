@@ -32,7 +32,7 @@ import portfolio.Repository.Samplemflix.TheaterRepository;
 
 @Configuration
 @Slf4j
-//@EnableMongoRepositories(basePackageClasses =TheaterRepository.class, mongoTemplateRef = "sample_mflix_mongoTemplate")
+@EnableMongoRepositories(basePackageClasses = TheaterRepository.class, mongoTemplateRef = "sample_mflix_mongoTemplate")
 @EnableConfigurationProperties
 public class SampleFlixConfig {
 

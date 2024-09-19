@@ -56,6 +56,7 @@ public class DemoApplication implements CommandLineRunner {
 	public void run(String...args) throws Exception{
 
 
+		List<Theaters> getTheators= theaterRepository.findAll();
 
 		// log.info("The theator repo works");
 

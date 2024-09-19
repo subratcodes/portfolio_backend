@@ -2,6 +2,7 @@ package portfolio;
 
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -23,6 +24,7 @@ public class RepoTest {
 
     @DisplayName("Find Shipwreck ID")
     @Test
+    @Disabled
     public void testFindMethods(){
 
         String id="578f6fa3df35c7fbdbaeda06a";

@@ -28,7 +28,6 @@ import com.mongodb.client.internal.MongoClientImpl;
 @Configuration
 public class SecurityConfig {
 
-    
 
     
     private AuthenticationProvider mongoAuth;

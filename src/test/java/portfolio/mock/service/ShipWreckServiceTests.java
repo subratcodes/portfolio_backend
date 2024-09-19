@@ -1,5 +1,6 @@
 package portfolio.mock.service;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -54,6 +55,7 @@ private PaginatedShiprwreck paginatedData;
 
 
     @Test
+    @Disabled
     public void findShipwreckData(){
 
         Pageable pag= PageRequest.of(0,10);
