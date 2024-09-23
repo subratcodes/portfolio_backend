@@ -36,8 +36,8 @@ public class DemoApplication implements CommandLineRunner {
 	private TheaterRepository  theaterRepository;
 
 
-	@Autowired
-	 private ShipwreckRepository shipwreckRepository;
+	// @Autowired
+	//  private ShipwreckRepository shipwreckRepository;
 	 
 	 
 	 @Autowired
@@ -60,7 +60,7 @@ public class DemoApplication implements CommandLineRunner {
 
 		// log.info("The theator repo works");
 
-		 List<Theaters> getTheators= theaterRepository.findAll();
+	
 
 		 getTheators.stream().limit(10).forEach( a->System.out.println(a.get_id()));
 
