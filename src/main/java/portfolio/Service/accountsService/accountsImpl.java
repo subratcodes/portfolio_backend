@@ -15,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
 import portfolio.Models.Externals.accounts;
+import portfolio.Response.AccountsResponse;
 
 
 @Service
@@ -34,14 +35,12 @@ public class accountsImpl implements accountServiceContract {
         accountsResponse result=template.getForObject(url+"/getAllAccounts?page="+pageNo, accountsResponse.class);
         Page<accounts> result2=new PageImpl<>(result.getContent(), PageRequest.of(pageNo,10),result.getTotalElements());
         
-        return result2;   
-
-        
+        return result2;      
     }
 
     @Override
     public Optional<accounts> findById(String id) {
-        HttpEntity<Page> result=template.getForEntity(url+"/account/"+id, Page.class);
+        HttpEntity<AccountsResponse> result=template.getForEntity(url+"/account/"+id, AccountsResponse.class);
         return Optional.empty();
     }
 

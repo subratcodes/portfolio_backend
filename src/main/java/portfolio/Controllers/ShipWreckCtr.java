@@ -1,11 +1,15 @@
 package portfolio.Controllers;
+
+
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.CacheControl;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,7 +73,7 @@ public class ShipWreckCtr {
     }
 
 
-    @PostMapping("videoConverter")
+    @GetMapping("videoConverter")
     public ResponseEntity<String> performConversion(){
 
         try {
@@ -87,8 +91,7 @@ public class ShipWreckCtr {
             buffer.append(notify.get());
 
 
-
-            return  new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
+            return ResponseEntity.ok().cacheControl(CacheControl.maxAge(30,TimeUnit.SECONDS)).body(buffer.toString());
 
         } catch (Exception e) {
             // TODO: handle exception
